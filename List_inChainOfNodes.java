@@ -15,7 +15,7 @@ public class List_inChainOfNodes {
      */
      public int size() {
          int count = 0;
-         Node_while current = headReference;
+         Node current = headReference;
          while (current != null) {
              count++;
              current = current.getReferenceToNextNode();
@@ -32,7 +32,7 @@ public class List_inChainOfNodes {
      public String toString() {
          String temp = "";
 
-         Node_while current = headReference;
+         Node current = headReference;
          while (current != null) {
              temp += current + " --> ";
              current = current.getReferenceToNextNode();
@@ -53,4 +53,76 @@ public class List_inChainOfNodes {
          this.headReference = new Node(val, headReference);
          return true;
      }
+
+    public boolean add(int index, Object value) {
+        if (index == 0) {
+            return addAsHead(value);
+        } else {
+            int count = 0;
+            Node current = headReference;
+            while (current != null) {
+                count++;
+                if (count == index) {
+                    current.setReferenceToNextNode(new Node(value, current.getReferenceToNextNode()));
+                    return true;
+                }
+                current = current.getReferenceToNextNode();
+            }
+        }
+        return false;
+    }
+
+    public Object get(int index) {
+        if (index == 0) {
+            return headReference.getCargoReference();
+        } else {
+            int count = 0;
+            Node current = headReference;
+            while (current != null) {
+                if (count == index) {
+                    return current.getCargoReference();
+                }
+                count++;
+                current = current.getReferenceToNextNode();
+            }
+        }
+        return null; // yikes
+    }
+
+    public void set(int index, Object value) {
+        if (index == 0) {
+            this.headReference = new Node(value, this.headReference.getReferenceToNextNode());
+        } else {
+            int count = 0;
+            Node current = headReference;
+            while (current != null) {
+                if (count == index - 1) {
+                    current.setReferenceToNextNode(new Node(value, current.getReferenceToNextNode().getReferenceToNextNode()));
+                }
+                count++;
+                current = current.getReferenceToNextNode();
+            }
+        }
+    }
+
+    public Object remove(int index) {
+        if (index == 0) {
+            Node temp = this.headReference;
+            this.headReference = this.headReference.getReferenceToNextNode();
+            return temp.getCargoReference();
+        } else {
+            int count = 0;
+            Node current = headReference;
+            while (current != null) {
+                if (count == index - 1) {
+                    Node temp = current.getReferenceToNextNode();
+                    current.setReferenceToNextNode(current.getReferenceToNextNode().getReferenceToNextNode());
+                    return temp.getCargoReference();
+                }
+                count++;
+                current = current.getReferenceToNextNode();
+            }
+        }
+        return null; // yikes
+    }
 }

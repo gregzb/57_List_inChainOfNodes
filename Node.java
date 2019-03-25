@@ -11,10 +11,11 @@ public class Node {
     /**
       Construct an instance
      */
-    public Node_while(Object cargoReference) {
+    public Node(Object cargoReference) {
         this(cargoReference, null);
     }
-     public Node_while(Object cargoReference, Node referenceToNextNodeRecursive) {
+
+     public Node(Object cargoReference, Node referenceToNextNodeRecursive) {
          /* For incremental development with the skeleton's UserOfNode,
             postpone writing this constructor until after the accessors.
             Then remove this comment, of course.
