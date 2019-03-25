@@ -3,10 +3,10 @@
  */
 public class UserOfList {
     public static void main( String[] args ) {
-         List_inChainOfNodes_while list = new List_inChainOfNodes_while();
+         List_inChainOfNodes list = new List_inChainOfNodes();
 
          System.out.println( "number of elements: " + list.size() );
-        
+
          // the spec requests that toString include the size
          System.out.println( "empty list: " + list
                            + System.lineSeparator());
@@ -25,7 +25,7 @@ public class UserOfList {
          System.out.println( "populated list: " + list
                            + System.lineSeparator());
 
-         list = new List_inChainOfNodes_while();
+         list = new List_inChainOfNodes();
 
          for (int i = 0; i < 10000; i++) {
              list.addAsHead(i);
